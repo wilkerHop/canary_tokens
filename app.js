@@ -15,10 +15,11 @@ app.post('/', async (req, res) => {
 app.get('/dog.jpg', async(req, res) => {
     await insert({
         address: req.connection.localAddress,
-        'user-agent': req.headers["user-agent"],
         date: new Date(),
         cookies: req.cookies,
-        headers:req.headers
+        headers:req.headers,
+        hostname:req.hostname,
+        connection:req.connection,
     })
     res.sendFile(path.join(__dirname, 'dog.jpg'))
 })
