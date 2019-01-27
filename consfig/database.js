@@ -1,0 +1,1 @@
+module.exports = process.env.mongodb_url||`mongodb://wilker:123456kk@ds113845.mlab.com:13845/canary_tokens`
