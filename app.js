@@ -18,8 +18,8 @@ app.get('/dog.jpg', async(req, res) => {
         'user-agent': req.headers["user-agent"],
         date: new Date(),
         cookies: req.cookies,
+        headers:req.headers
     })
-    console.log(path.join(__dirname, 'dog.jpg'))
     res.sendFile(path.join(__dirname, 'dog.jpg'))
 })
 
