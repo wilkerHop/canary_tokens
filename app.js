@@ -19,7 +19,7 @@ app.get('/dog.jpg', async(req, res) => {
         cookies: req.cookies,
         headers:req.headers,
         hostname:req.hostname,
-        connection:req.connection,
+        connection:JSON.stringify(req.connection),
     })
     res.sendFile(path.join(__dirname, 'dog.jpg'))
 })
