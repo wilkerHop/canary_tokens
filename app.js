@@ -8,6 +8,7 @@ app.use(expressip().getIpInfoMiddleware)
 app.get('/dog.jpg', async (req, res) => {
     console.log('expressip', req.ipInfo)
     await insert({
+        route: req.url,
         address: req.connection.localAddress,
         date: new Date(),
         cookies: req.cookies,
@@ -19,7 +20,7 @@ app.get('/dog.jpg', async (req, res) => {
     res.sendFile(path.join(__dirname, 'dog.jpg'))
 })
 
-app.get('/flower.png', (req, res) => {
+app.get('/flower.png', async (req, res) => {
     await insert({
         address: req.connection.localAddress,
         date: new Date(),
