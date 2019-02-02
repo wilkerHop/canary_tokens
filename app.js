@@ -1,17 +1,10 @@
 const app = require('express')()
-const bodyParser = require('body-parser')
 const expressip = require('express-ip')
 const MongoClient = require('mongodb').MongoClient
 const path = require('path')
 const fs = require('fs');
 
-app.use(bodyParser.json())
 app.use(expressip().getIpInfoMiddleware)
-app.post('/', async (req, res) => {
-    insert(req.body)
-
-    res.sendStatus(200)
-})
 
 app.get('/dog.jpg', async (req, res) => {
     console.log('expressip', req.ipInfo)
