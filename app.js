@@ -5,17 +5,18 @@ const path = require('path')
 
 app.use(expressip().getIpInfoMiddleware)
 
-app.get('/:subject', async (req, res) => {
+app.get('**:subject', async (req, res) => {
     await insert(req)
+    console.log(req.url)
     switch (req.url) {
         case '/dog.jpg':
-            return res.sendFile(path.join(__dirname, 'dog.jpg'))        
+            return res.sendFile(path.join(__dirname, 'dog.jpg'))
         case '/slide':
             return res.redirect('https://docs.google.com/presentation/d/1Ryo64FmYSiQPRT7CdavwOkevNBikc4mjkoVOKcrZCEw/edit?usp=sharing')
         default:
-            const imgHex = '47494638396101000100800000dbdfef00000021f90401000000002c00000000010001000002024401003b';
-            const imgBinary = new Buffer(imgHex, 'hex');
-            return res.send(imgBinary)
+            const imgBinary = Buffer.alloc(6, '47494638396101000100800000dbdfef00000021f90401000000002c00000000010001000002024401003b', 'hex');
+            res.write(imgBinary)
+            res.send();
     }
 })
 
