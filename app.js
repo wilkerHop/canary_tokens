@@ -15,7 +15,7 @@ app.get('**', async (req, res) => {
       return res.sendFile(path.join(__dirname, 'dog.jpg')) // renders an image
     case '/slide':
       return res.redirect(slideLink) // redirects to another external link
-    case 'git':
+    case '/git':
       return res.redirect(gitLink) // redirects to another external link
     default:
       const imgBinary = Buffer.alloc(6, binaryString, 'hex') // creates a buffer image
