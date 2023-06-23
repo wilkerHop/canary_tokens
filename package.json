@@ -12,6 +12,6 @@
   "dependencies": {
     "express": "^4.17.3",
     "express-ip": "^1.0.3",
-    "mongodb": "^3.1.13"
+    "mongodb": "^3.7.4"
   }
 }
